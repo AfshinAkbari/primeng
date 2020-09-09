@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from 'primeng/api';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import * as moment  from 'jalali-moment';
 
 describe('Calendar', () => {
 
@@ -241,9 +242,9 @@ describe('Calendar', () => {
 	});
 
 	it('should select date when click', fakeAsync(() => {
-		const date = new Date(2017, 8, 23);
+		const date = moment([2017, 8, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		fixture.detectChanges();
 
 		const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
@@ -298,21 +299,21 @@ describe('Calendar', () => {
 	});
 
 	it('should use min and max date', () => {
-		let minDate: Date;
-		let maxDate: Date;
-		let today = new Date();
-		let month = today.getMonth();
-		let year = today.getFullYear();
+		let minDate: moment.Moment;
+		let maxDate: moment.Moment;
+		let today = moment();
+		let month = today.month();
+		let year = today.year();
 		let prevMonth = (month === 0) ? 11 : month - 1;
 		let prevYear = (prevMonth === 11) ? year - 1 : year;
 		let nextMonth = (month === 11) ? 0 : month + 1;
 		let nextYear = (nextMonth === 0) ? year + 1 : year;
-		minDate = new Date();
-		minDate.setMonth(prevMonth);
-		minDate.setFullYear(prevYear);
-		maxDate = new Date();
-		maxDate.setMonth(nextMonth);
-		maxDate.setFullYear(nextYear);
+		minDate = moment();
+		minDate.month(prevMonth);
+		minDate.year(prevYear);
+		maxDate = moment();
+		maxDate.month(nextMonth);
+		maxDate.year(nextYear);
 		calendar.minDate = minDate;
 		calendar.maxDate = maxDate;
 		fixture.detectChanges();
@@ -336,11 +337,11 @@ describe('Calendar', () => {
 
 	it('should use invalidDates', () => {
 
-		let invalidDates: Array<Date>;
-		let invalidDate = new Date();
-		invalidDate.setDate(15);
-		let invalidDate2 = new Date();
-		invalidDate2.setDate(invalidDate.getDate() - 1);
+		let invalidDates: Array<moment.Moment>;
+		let invalidDate = moment();
+		invalidDate.date(15);
+		let invalidDate2 = moment();
+		invalidDate2.date(invalidDate.date() - 1);
 		invalidDates = [invalidDate, invalidDate2];
 		calendar.disabledDates = invalidDates;
 		fixture.detectChanges();
@@ -355,7 +356,7 @@ describe('Calendar', () => {
 		const unselectableEls = containerEl.queryAll(By.css('.p-disabled'));
 		let invalidDateArray = [];
 		for (let el of unselectableEls) {
-			if (el.nativeElement.textContent == invalidDate.getDate() || el.nativeElement.textContent == invalidDate2.getDate()) {
+			if (el.nativeElement.textContent == invalidDate.date() || el.nativeElement.textContent == invalidDate2.date()) {
 				invalidDateArray.push(el.nativeElement.textContent);
 			}
 		}
@@ -414,9 +415,9 @@ describe('Calendar', () => {
 	});
 
 	it('should show time', () => {
-		const date = new Date(2017, 8, 23, 15, 12);
+		const date = moment([2017, 8, 23, 15, 12]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		const updateInputfieldSpy = spyOn(calendar, 'updateInputfield').and.callThrough();
 		calendar.showTime = true;
 		calendar.monthNavigator = true;
@@ -1017,8 +1018,8 @@ describe('Calendar', () => {
 	});
 
 	it('should set defaultDate', () => {
-		calendar.defaultDate = new Date(2017, 8, 23, 11, 12);
-		jasmine.clock().mockDate(new Date(2017, 8, 23, 11, 12));
+		calendar.defaultDate = moment([2017, 8, 23, 11, 12]);
+		jasmine.clock().mockDate(moment([2017, 8, 23, 11, 12]).toDate());
 		calendar.showTime = true;
 		fixture.detectChanges();
 
@@ -1045,9 +1046,9 @@ describe('Calendar', () => {
 	});
 
 	it('should show seconds', () => {
-		const date = new Date(2017, 8, 23, 11, 12, 21);
+		const date = moment([2017, 8, 23, 11, 12, 21]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.showTime = true;
 		calendar.showSeconds = true;
 		fixture.detectChanges();
@@ -1072,9 +1073,9 @@ describe('Calendar', () => {
 	});
 
 	it('should change seconds', () => {
-		const date = new Date(2017, 8, 23, 11, 12, 21);
+		const date = moment([2017, 8, 23, 11, 12, 21]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.showTime = true;
 		calendar.showSeconds = true;
 		fixture.detectChanges();
@@ -1108,9 +1109,9 @@ describe('Calendar', () => {
 	});
 
 	it('should change stepSecond stepHour and stepMinute', () => {
-		const date = new Date(2017, 8, 23, 11, 12, 21);
+		const date = moment([2017, 8, 23, 11, 12, 21]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.showTime = true;
 		calendar.showSeconds = true;
 		calendar.stepHour = 2;
@@ -1165,9 +1166,9 @@ describe('Calendar', () => {
 	});
 
 	it('should change stepSecond stepHour and stepMinute (out of border values)', () => {
-		const date = new Date(2017, 8, 23, 22, 58, 58);
+		const date = moment([2017, 8, 23, 22, 58, 58]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.showTime = true;
 		calendar.showSeconds = true;
 		calendar.stepHour = 5;
@@ -1241,9 +1242,9 @@ describe('Calendar', () => {
 	});
 
 	it('should change dataType', () => {
-		const date = new Date(2017, 8, 23, 11, 12, 21);
+		const date = moment([2017, 8, 23, 11, 12, 21]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.dataType = 'string';
 		const formatDateTimeSpy = spyOn(calendar, 'formatDateTime').and.callThrough();
 		fixture.detectChanges();
@@ -1264,9 +1265,9 @@ describe('Calendar', () => {
 	});
 
 	it('should single select ', () => {
-		const date = new Date(2017, 8, 23);
+		const date = moment([2017, 8, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		const onDateSelectSpy = spyOn(calendar, 'onDateSelect').and.callThrough();
 		fixture.detectChanges();
 
@@ -1287,9 +1288,9 @@ describe('Calendar', () => {
 	});
 
 	it('should change maxDateCount ', () => {
-		const date = new Date(2017, 8, 23);
+		const date = moment([2017, 8, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		const onDateSelectSpy = spyOn(calendar, 'onDateSelect').and.callThrough();
 		calendar.maxDateCount = 2;
 		calendar.selectionMode = "multiple";
@@ -1388,9 +1389,9 @@ describe('Calendar', () => {
 	});
 
 	it('should change selectOtherMonths', () => {
-		const date = new Date(2017, 8, 23);
+		const date = moment([2017, 8, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.selectOtherMonths = true;
 		fixture.detectChanges();
 
@@ -1429,9 +1430,9 @@ describe('Calendar', () => {
 	});
 
 	it('should change selectionMode', () => {
-		const date = new Date(2017, 8, 23);
+		const date = moment([2017, 8, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.selectionMode = 'range';
 		calendar.showTime = true;
 		calendar.showSeconds = true;
@@ -1453,9 +1454,9 @@ describe('Calendar', () => {
 	});
 
 	it('should change selectionMode (range max date first pick)', () => {
-		const date = new Date(2017, 8, 23);
+		const date = moment([2017, 8, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.selectionMode = 'range';
 		calendar.showTime = true;
 		calendar.showSeconds = true;
@@ -1482,9 +1483,9 @@ describe('Calendar', () => {
 	});
 
 	it('should change selectionMode (range three times pick)', () => {
-		const date = new Date(2017, 8, 23);
+		const date = moment([2017, 8, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.selectionMode = 'range';
 		calendar.showTime = true;
 		calendar.showSeconds = true;
@@ -1536,9 +1537,9 @@ describe('Calendar', () => {
 
 	it('should change appendto', () => {
 		calendar.appendTo = "body";
-		const date = new Date(2017, 8, 23);
+		const date = moment([2017, 8, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.showTime = true;
 		calendar.showSeconds = true;
 		fixture.detectChanges();
@@ -1591,9 +1592,9 @@ describe('Calendar', () => {
 	}));
 
 	it('should be next year', () => {
-		const date = new Date(2017, 11, 23);
+		const date = moment([2017, 11, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		fixture.detectChanges();
 
 		const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
@@ -1617,9 +1618,9 @@ describe('Calendar', () => {
 	});
 
 	it('should be previous year', () => {
-		const date = new Date(2017, 0, 23);
+		const date = moment([2017, 0, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		fixture.detectChanges();
 
 		const inputEl = fixture.debugElement.query(By.css('input')).nativeElement;
@@ -1669,9 +1670,9 @@ describe('Calendar', () => {
 	});
 
 	it('should be next year', () => {
-		const date = new Date(2017, 11, 23);
+		const date = moment([2017, 11, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.yearNavigator = true;
 		calendar.monthNavigator = true;
 		calendar.yearRange = "2000:2030";
@@ -1692,9 +1693,9 @@ describe('Calendar', () => {
 	});
 
 	it('should be previous year', () => {
-		const date = new Date(2017, 0, 23);
+		const date = moment([2017, 0, 23]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.yearNavigator = true;
 		calendar.monthNavigator = true;
 		calendar.yearRange = "2000:2030";
@@ -1715,9 +1716,9 @@ describe('Calendar', () => {
 	});
 
 	it('should select range (touchUI)', () => {
-		const date = new Date(2017, 2, 12);
+		const date = moment([2017, 2, 12]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.touchUI = true;
 		calendar.selectionMode = "range";
 		fixture.detectChanges();
@@ -1744,9 +1745,9 @@ describe('Calendar', () => {
 	});
 
 	it('should select range (touchUI third times)', () => {
-		const date = new Date(2017, 2, 12);
+		const date = moment([2017, 2, 12]);
 		calendar.defaultDate = date;
-		jasmine.clock().mockDate(date);
+		jasmine.clock().mockDate(date.toDate());
 		calendar.touchUI = true;
 		calendar.selectionMode = "multiple";
 		fixture.detectChanges();

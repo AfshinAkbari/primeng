@@ -12,62 +12,57 @@
         <div class="p-fluid p-grid p-formgrid">
             <div class="p-field p-col-12 p-md-4">
                 <label for="basic">Basic</label>
-                <p-calendar inputId="basic" [(ngModel)]="date1"></p-calendar>
-            </div>
-
-            <div class="p-field p-col-12 p-md-4">
-                <label for="spanish">Spanish</label>
-                <p-calendar [(ngModel)]="date2" [locale]="es" dateFormat="dd/mm/yy" inputId="spanish"></p-calendar>
+                <p-calendar calendarType="jalali" inputId="basic" [(ngModel)]="date1"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="icon">Icon</label>
-                <p-calendar [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date3" [showIcon]="true" inputId="icon"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="min-max">Min-Max</label>
-                <p-calendar [(ngModel)]="date4" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" inputId="min-max"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date4" [minDate]="minDate" [maxDate]="maxDate" [readonlyInput]="true" inputId="min-max"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="disabledays">Disable Days</label>
-                <p-calendar [(ngModel)]="date5" [disabledDates]="invalidDates" [disabledDays]="[0,6]" [readonlyInput]="true" inputId="disabledays"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date5" [disabledDates]="invalidDates" [disabledDays]="[0,6]" [readonlyInput]="true" inputId="disabledays"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="navigators">Navigators</label>
-                <p-calendar [(ngModel)]="date6" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" inputId="navigators"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date6" [monthNavigator]="true" [yearNavigator]="true" yearRange="2000:2030" inputId="navigators"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="time">Time</label>
-                <p-calendar [(ngModel)]="date7" [showTime]="true" inputId="time"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date7" [showTime]="true" inputId="time"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="timeonly">Time Only</label>
-                <p-calendar [(ngModel)]="date8" [timeOnly]="true" inputId="timeonly"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date8" [timeOnly]="true" inputId="timeonly"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="multiple">Multiple</label>
-                <p-calendar [(ngModel)]="dates" selectionMode="multiple" [readonlyInput]="true" inputId="multiple"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="dates" selectionMode="multiple" [readonlyInput]="true" inputId="multiple"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="range">Range</label>
-                <p-calendar [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="buttonbar">Button Bar</label>
-                <p-calendar [(ngModel)]="date9" showButtonBar="true" inputId="buttonbar"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date9" showButtonBar="true" inputId="buttonbar"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="template">Date Template</label>
-                <p-calendar [(ngModel)]="date10" inputId="template">
+                <p-calendar calendarType="jalali" [(ngModel)]="date10" inputId="template">
                     <ng-template pTemplate="date" let-date>
                         <span [ngStyle]="{backgroundColor: (date.day < 21 && date.day > 10) ? '#81C784' : 'inherit'}" style="border-radius:50%; padding: .25em; width: 2em; height: 2em; display:block">{{date.day}}</span>
                     </ng-template>
@@ -76,22 +71,22 @@
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="multiplemonths">Multiple Months</label>
-                <p-calendar [(ngModel)]="date11" [numberOfMonths]="3" inputId="multiplemonths"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date11" [numberOfMonths]="3" inputId="multiplemonths"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="monthpicker">Month Picker</label>
-                <p-calendar [(ngModel)]="date12" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true" inputId="monthpicker"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date12" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030" [readonlyInput]="true" inputId="monthpicker"></p-calendar>
             </div>
 
             <div class="p-field p-col-12 p-md-4">
                 <label for="touchui">Touch UI</label>
-                <p-calendar [(ngModel)]="date13" [touchUI]="true" [readonlyInput]="true" inputId="touchui"></p-calendar>
+                <p-calendar calendarType="jalali" [(ngModel)]="date13" [touchUI]="true" [readonlyInput]="true" inputId="touchui"></p-calendar>
             </div>
         </div>
 
         <h5>Inline</h5>
-        <p-calendar [(ngModel)]="date14" [inline]="true" [showWeek]="true"></p-calendar>
+        <p-calendar calendarType="jalali" [(ngModel)]="date14" [inline]="true" [showWeek]="true"></p-calendar>
     </div>
 
 </div>
@@ -102,19 +97,20 @@
             <h5>Import</h5>
 <app-code lang="typescript" ngNonBindable ngPreserveWhitespaces>
 import &#123;CalendarModule&#125; from 'primeng/calendar';
+import &#123;moment&#125; from 'jalali-moment';
 </app-code>
 
             <h5>Getting Started</h5>
             <p>Two-way value binding is defined using the standard ngModel directive referencing to a Date property.</p>
 
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="value"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="value"&gt;&lt;/p-calendar&gt;
 </app-code>
 
 <app-code lang="typescript" ngNonBindable ngPreserveWhitespaces>
 export class MyModel &#123;
 
-    value: Date;
+    value: moment.Moment;
 
 &#125;
 </app-code>
@@ -122,13 +118,13 @@ export class MyModel &#123;
             <h5>Model Driven Forms</h5>
             <p>Calendar can be used in a model driven form as well.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar formControlName="date"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" formControlName="date"&gt;&lt;/p-calendar&gt;
 </app-code>
 
             <h5>Popup and Inline</h5>
             <p>Calendar is displayed in a <i>popup</i> by default and <i>inline</i> property needs to be enabled for inline mode.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="value" [inline]="true"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="value" [inline]="true"&gt;&lt;/p-calendar&gt;
 </app-code>
 
             <h5>Selection Mode</h5>
@@ -137,97 +133,44 @@ export class MyModel &#123;
             Third alternative is the range mode that allows selecting a range based on an array of two values where first value is the start date and second value
             is the end date.</p>
 
-            <h5>DateFormat</h5>
-            <p>Default date format is mm/dd/yy, to customize this use <i>dateFormat</i> property or define it at locale settings. Note that standalone property overrides the value in locale settings.</p>
-<app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue" dateFormat="dd.mm.yy"&gt;&lt;/p-calendar&gt;
-</app-code>
-
-            <p>Following options can be a part of the format.</p>
-            <ul>
-    			<li>d - day of month (no leading zero)</li>
-    			<li>dd - day of month (two digit)</li>
-    			<li>o - day of the year (no leading zeros)</li>
-    			<li>oo - day of the year (three digit)</li>
-    			<li>D - day name short</li>
-    			<li>DD - day name long</li>
-    			<li>m - month of year (no leading zero)</li>
-    			<li>mm - month of year (two digit)</li>
-    			<li>M - month name short</li>
-    			<li>MM - month name long</li>
-    			<li>y - year (two digit)</li>
-    			<li>yy - year (four digit)</li>
-    			<li>@ - Unix timestamp (ms since 01/01/1970)</li>
-    			<li> ! - Windows ticks (100ns since 01/01/0001)</li>
-    			<li>'...' - literal text</li>
-    			<li>'' - single quote</li>
-    			<li>anything else - literal text</li>
-		    </ul>
 
             <h5>Time</h5>
             <p>TimePicker is enabled with  <i>showTime</i> property and 24 (default) or 12 hour mode is configured using <i>hourFormat</i> option.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="value" showTime="true" hourFormat="12"&gt;&lt;/p-calendar&gt;
-&lt;p-calendar [(ngModel)]="value" showTime="true" hourFormat="24"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="value" showTime="true" hourFormat="12"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="value" showTime="true" hourFormat="24"&gt;&lt;/p-calendar&gt;
 </app-code>
 
             <h5>Date Restriction</h5>
             <p>To disable entering dates manually, set <i>readonlyInput</i> to true and to restrict selectable dates use <i>minDate</i>
                 and <i>maxDate</i> options.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue" [minDate]="minDateValue" [maxDate]="maxDateValue" [readonlyInput]="true"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="dateValue" [minDate]="minDateValue" [maxDate]="maxDateValue" [readonlyInput]="true"&gt;&lt;/p-calendar&gt;
 </app-code>
 
             <h5>Disable specific dates and/or days</h5>
             <p>To disable specific dates or days, set readonlyInput to true and to restrict selectable dates use <i>disabledDates</i> and/or <i>disabledDays</i> options.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue" [disabledDates]="invalidDates" [disabledDays]="[0,6]" [readonlyInput]="true"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="dateValue" [disabledDates]="invalidDates" [disabledDays]="[0,6]" [readonlyInput]="true"&gt;&lt;/p-calendar&gt;
 </app-code>
 
             <h5>Button Bar</h5>
             <p>Button bar displays today and clear buttons and enabled using <i>showButtonBar</i> property.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue" showButtonBar="true"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="dateValue" showButtonBar="true"&gt;&lt;/p-calendar&gt;
 </app-code>
 
             <h5>Multiple Months</h5>
             <p>Displaying multiple months is enabled by setting <i>numberOfMonths</i> property to a value greater than 1.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue" [numberOfMonths]="3"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="dateValue" [numberOfMonths]="3"&gt;&lt;/p-calendar&gt;
 </app-code>
 
-            <h5>Localization</h5>
-            <p>Localization for different languages and formats is defined by binding the locale settings object to the <i>locale</i> property. Following is the default values for English.</p>
+
+    <h5>Custom Content</h5>
+    <p>Calendar UI accepts custom content using p-header and p-footer components.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue" [locale]="en"&gt;&lt;/p-calendar&gt;
-</app-code>
-
-<app-code lang="typescript" ngNonBindable ngPreserveWhitespaces>
-export class MyModel &#123;
-
-    en: any;
-
-    ngOnInit() &#123;
-        this.en = &#123;
-            firstDayOfWeek: 0,
-            dayNames: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            dayNamesShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-            dayNamesMin: ["Su","Mo","Tu","We","Th","Fr","Sa"],
-            monthNames: [ "January","February","March","April","May","June","July","August","September","October","November","December" ],
-            monthNamesShort: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun","Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ],
-            today: 'Today',
-            clear: 'Clear',
-            dateFormat: 'mm/dd/yy',
-            weekHeader: 'Wk'
-        &#125;;
-    &#125;
-&#125;
-</app-code>
-
-            <h5>Custom Content</h5>
-            <p>Calendar UI accepts custom content using p-header and p-footer components.</p>
-<app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue"&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="dateValue"&gt;
     &lt;p-header&gt;Header&lt;/p-header&gt;
     &lt;p-footer&gt;Footer&lt;/p-footer&gt;
 &lt;/p-calendar&gt;
@@ -239,7 +182,7 @@ export class MyModel &#123;
             <p>In addition, "disabledDateTemplate" is provided in case you need to customize the content of disabled dates as well.</p>
 
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="date10"&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="date10"&gt;
     &lt;ng-template pTemplate="date" let-date&gt;
         &lt;span [ngStyle]="&#123;backgroundColor: (date.day &lt; 21 && date.day &gt; 10) ? '#7cc67c' : 'inherit'&#125;" style="border-radius:50%"&gt;{{date.day}}&lt;/span&gt;
     &lt;/ng-template&gt;
@@ -249,23 +192,23 @@ export class MyModel &#123;
             <h5>Month Picker</h5>
             <p>Month picker is used to select month and year only without the date, set view mode as "month" to activate month picker.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="dateValue" view="month" dateFormat="mm/yy" [yearNavigator]="true" yearRange="2000:2030"&gt;&lt;/p-calendar&gt;
 </app-code>
 
             <h5>Touch UI</h5>
             <p>
-                Touch UI mode displays the calendar overlay at the center of the screen as optimized for touch devices. 
+                Touch UI mode displays the calendar overlay at the center of the screen as optimized for touch devices.
                 When using Touch UI mode you will typically want to set readonlyInput to prevent keyboard popup for mobile users.
             </p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue" [touchUI]="true" [readonlyInput]="true"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="dateValue" [touchUI]="true" [readonlyInput]="true"&gt;&lt;/p-calendar&gt;
 </app-code>
 
             <h5>Animation Configuration</h5>
-            <p>Transition of the open and hide animations can be customized using the <i>showTransitionOptions</i> and <i>hideTransitionOptions</i> properties, 
+            <p>Transition of the open and hide animations can be customized using the <i>showTransitionOptions</i> and <i>hideTransitionOptions</i> properties,
                 example below disables the animations altogether.</p>
 <app-code lang="markup" ngNonBindable ngPreserveWhitespaces>
-&lt;p-calendar [(ngModel)]="dateValue" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"&gt;&lt;/p-calendar&gt;
+&lt;p-calendar calendarType="jalali" [(ngModel)]="dateValue" [showTransitionOptions]="'0ms'" [hideTransitionOptions]="'0ms'"&gt;&lt;/p-calendar&gt;
 </app-code>
 
             <h5>Properties</h5>
@@ -929,7 +872,7 @@ export class CalendarDemo &#123;
     date13: Date;
 
     date14: Date;
-    
+
     dates: Date[];
 
     rangeDates: Date[];
